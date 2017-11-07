@@ -1,0 +1,12 @@
+  security:
+    name: security
+    duration: '00:10:00'
+    icon: mdi:security-home
+  lightworking:
+    name: light working
+    duration: '00:10:00'
+    icon: mdi:lightbulb
+  lightoffwork:
+    name: light off work
+    duration: '00:03:00'
+    icon: mdi:lightbulb

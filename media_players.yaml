@@ -1,0 +1,89 @@
+### media_player.yaml
+###############################################################################
+### Chromecast                                                              ###
+###############################################################################
+
+  - platform: cast
+    name: Home Theater Cast
+    host: 192.168.1.48
+
+  - platform: cast
+    name: Office Audio Cast
+    host: 192.168.1.140
+
+  - platform: cast
+    name: Home Theater Audio Cast
+    host: 192.168.1.149
+
+#  - platform: cast
+#    name: Bedroom Cast
+#    host: 192.168.1.148
+
+#  - platform: cast
+#    name: Upstairs Living Room Cast
+#    host: 192.168.1.141
+
+  - platform: cast
+    name: Audio Group
+
+  - platform: cast
+    name: Office Google Home Mini
+    host: 192.168.1.203
+
+###############################################################################
+### Sonos                                                                   ###
+###############################################################################
+
+#  - platform: sonos
+#    name: Sonos
+#    host: 192.168.1.44
+
+###############################################################################
+### Onkyo Receiver                                                          ###
+###############################################################################
+
+  - platform: onkyo
+    host: 192.168.1.130
+    name: Onkyo Receiver
+    sources:
+      pc: 'HTPC'
+      aux1: 'Chromecast'
+      bd-dvd: 'Bluray'
+      game: 'PS4'
+      xm: 'SiriusXM'
+      internet-radio: 'Spotify'
+      fm: 'FM'
+
+###############################################################################
+### Kodi                                                                    ###
+###############################################################################
+
+#  - platform: kodi
+#    host: 192.168.1.110
+#    port: 8080
+#    name: Kodi
+#    username: !secret kodi_user
+#    password: !secret kodi_password
+#    turn_off_action: reboot
+
+################################################################################
+### Fire TV                                                                  ###
+################################################################################
+
+#  - platform: firetv
+#    host: localhost:5556
+#    device: firetv1
+#    name: Living Room Fire TV
+#
+#  - platform: firetv
+#    host: localhost:5556
+#    device: firetv2
+#    name: Bedroom Fire TV
+
+################################################################################
+### Google Play Music Dektop Player                                          ###
+################################################################################
+
+#  - platform: gpmdp
+#    host: 192.168.1.53
+#    name: Office GPMDP

@@ -1,0 +1,13 @@
+secrets.yaml
+secrets.yaml.save
+*.log
+*.conf
+*.db
+known_devices.yaml
+OZW_Log.txt
+*.sqlite
+zwcfg*.xml
+zwscene.xml
+.HA_VERSION
+.uuid
+*.mp3

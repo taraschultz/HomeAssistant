@@ -1,0 +1,420 @@
+  - id: Radio_1
+    alias: Turn on Z100
+    trigger:
+      platform: time
+      at: '07:55:00'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: device_tracker.64bc0c45f661
+          state: 'home'
+        - condition: time
+          after: '07:55:00'
+          weekday:
+            - mon
+            - tue
+            - wed
+            - thu
+            - fri
+        - condition: state
+          entity_id: switch.pioneer_receiver_power
+          state: 'off'
+    action:
+      - service: switch.turn_on
+        entity_id: switch.office_smart_switch_switch
+      - service: switch.turn_on
+        entity_id: switch.pioneer_receiver_power
+      - delay: 00:00:05
+      - service: switch.turn_on
+        entity_id: switch.pioneer_receiver_input_network
+
+  - id: Patio_Tamper
+    alias: Patio door tamper alarm
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.patio_door_burglar
+      above: 2
+    condition:
+      condition: numeric_state
+      entity_id: sensor.patio_door_burglar
+      above: 2
+    action:
+      - service: tts.google_say
+        entity_id: media_player.office_google_home_mini
+        data:
+          message: 'The patio door has been tampered with.'
+      - service: notify.html5
+        data:
+          title: 'Door Alarm'
+          message: 'The patio door has been tampered with.'
+        
+  - id: Front_Door_Tamper
+    alias: Front door tamper alarm
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.front_door_burglar
+      above: 2
+    condition:
+      condition: numeric_state
+      entity_id: sensor.front_door_burglar
+      above: 2
+    action:
+      - service: tts.google_say
+        entity_id: media_player.office_google_home_mini
+        data:
+          message: 'The front door has been tampered with.'
+      - service: notify.html5
+        data:
+          title: 'Door Alarm'
+          message: 'The front door has been tampered with.'
+
+  - id: Battery_level_low
+    alias: Battery level low
+    trigger:
+      platform: state
+      entity_id: sensor.battery_level_warning
+      from: 'Good'
+      to: 'Low'
+    action:
+      - service: tts.google_say
+        entity_id: media_player.office_google_home_mini
+        data:
+          message: 'Sensor battery low.'
+      - service: notify.html5_tara
+        data:
+          title: 'Sensor battery low'
+          message: 'Sensor battery low.'
+
+  - id: Replace_battery
+    alias: Replace battery
+    trigger:
+      platform: state
+      entity_id: sensor.battery_level_warning
+      from: 'Low'
+      to: 'Replace'
+    action:
+      - service: tts.google_say
+        entity_id: media_player.office_google_home_mini
+        data:
+          message: 'Replace sensor battery.'
+      - service: notify.html5_tara
+        data:
+          title: 'Replace sensor battery'
+          message: 'Replace sensor battery.'
+
+  - id: zwave_heal
+    alias: heal at 5:01am
+    trigger:
+      platform: time
+      at: '05:01:00'
+    condition:
+      condition: and
+      conditions:
+        - condition: time
+          after: '05:01:00'
+        - condition: time
+          before: '05:02:00'
+    action:
+      service: zwave.heal_network
+
+  - id: Light_on_work
+    alias: Turn on office light - working
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.aeotec_zw100_multisensor_6_burglar
+      above: 2
+    condition:
+      condition: and
+      conditions:
+        - condition: numeric_state
+          entity_id: sensor.aeotec_zw100_multisensor_6_burglar
+          above: 2
+        - condition: state
+          entity_id: switch.office_light_switch
+          state: 'off'
+        - condition: time
+          after: '07:30:00'
+          before: '18:00:00'
+          weekday:
+            - mon
+            - tue
+            - wed
+            - thu
+            - fri
+    action:
+      service: switch.turn_on
+      entity_id: switch.office_light_switch
+
+  - id: light_off
+    alias: Turn on office light - off work
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.aeotec_zw100_multisensor_6_burglar
+      above: 2
+    condition:
+      condition: and
+      conditions:
+        - condition: numeric_state
+          entity_id: sensor.aeotec_zw100_multisensor_6_burglar
+          above: 2
+        - condition: state
+          entity_id: switch.office_light_switch
+          state: 'off'
+        - condition: numeric_state
+          entity_id: sensor.aeotec_zw100_multisensor_6_luminance
+          below: 8
+        - condition: or
+          conditions:
+          - condition: time
+            before: '07:30:00'
+            after: '18:00:00'
+            weekday:
+              - mon
+              - tue
+              - wed
+              - thu
+              - fri
+          - condition: time
+            weekday:
+              - sat
+              - sun
+    action:
+      service: switch.turn_on
+      entity_id: switch.office_light_switch
+
+  - id: light_off
+    alias: Turn off office light - off work
+    trigger:
+      platform: time
+      minutes: '/3'
+      seconds: 0
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sensor.aeotec_zw100_multisensor_6_burglar
+          state: '0'
+          for:
+            hours: 0
+            minutes: 3
+            seconds: 0
+        - condition: state
+          entity_id: switch.office_light_switch
+          state: 'on'
+        - condition: or
+          conditions:
+          - condition: time
+            before: '07:30:00'
+            after: '18:00:00'
+            weekday:
+              - mon
+              - tue
+              - wed
+              - thu
+              - fri
+          - condition: time
+            weekday:
+              - sat
+              - sun
+    action:
+      service: switch.turn_off
+      entity_id: switch.office_light_switch
+
+  - id: light_off_work
+    alias: Turn off office light - on work
+    trigger:
+      platform: time
+      minutes: '/10'
+      seconds: 0
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sensor.aeotec_zw100_multisensor_6_burglar
+          state: '0'
+          for:
+            hours: 0
+            minutes: 3
+            seconds: 0
+        - condition: state
+          entity_id: switch.office_light_switch
+          state: 'on'
+        - condition: time
+          after: '07:30:00'
+          before: '18:00:00'
+          weekday:
+            - mon
+            - tue
+            - wed
+            - thu
+            - fri
+    action:
+      service: switch.turn_off
+      entity_id: switch.office_light_switch
+
+#  - id: Office_fan_off_unoccupied
+#    alias: turn off fan in office when unoccupied
+#    trigger:
+#      platform: numeric_state
+#      entity_id: sensor.aeotec_zw100_multisensor_6_burglar
+#      below: 1
+#    condition:
+#      condition: and
+#      conditions:
+#        - condition: state
+#          entity_id: switch.office_fan_switch
+#          state: 'on'
+#        - condition: state
+#          entity_id: sensor.aeotec_zw100_multisensor_6_burglar
+#          state: '0'
+#          for:
+#            hours: 0
+#            minutes: 5
+#            seconds: 0
+#    action:
+#      service: switch.turn_off
+#      entity_id: switch.office_fan_switch
+
+#  - id: office_fan_temp_and_occupancy
+#    alias: Check temp and occupance for fan every 5 minutes
+#    trigger:
+#      platform: time
+#      minutes: '/5'
+#      seconds: 0
+#    condition:
+#      condition: and
+#      conditions:
+#        - condition: time
+#          before: '17:00:00'
+#          after: '08:00:00'
+#        - condition: numeric_state
+#          entity_id: sensor.aeotec_zw100_multisensor_6_temperature
+#          above: 77.5
+#        - condition: numeric_state
+#          entity_id: sensor.aeotec_zw100_multisensor_6_burglar0
+#          above: 7
+#    action:
+#      service: switch.turn_on
+#      entity_id: switch.office_fan_switch
+
+#  - id: office_fan_off_after_6
+#    alias: Turn off fan after 6:00pm
+#    trigger:
+#      platform: time
+#      at: '18:00:00'
+#    condition:
+#      condition: state
+#      entity_id: switch.office_fan_switch
+#      state: 'on'
+#    action:
+#      service: switch.turn_off
+#      entity_id: switch.office_fan_switch
+
+  - id: check_external_ip
+    alias: Check external IP
+    trigger:
+      platform: state
+      entity_id: sensor.myipopendnscom
+    condition:
+      condition: template
+      value_template: "{{ states.sensor.myipopendnscom == states.sensor.pterodactyltechnology }}"
+    action:
+      service: notify.gmail
+      data:
+        title: "Home External IP"
+        message: "The external IP has changed"
+
+  - id: Doors_open_notification
+    alias: Door(s) open notification
+    trigger:
+      platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.security
+    action:
+      service: notify.html5
+      data:
+        title: 'Door Alarm'
+        message: 'A door has been open for 10 minutes'
+
+  - id: Doors_open_while_away_notification
+    alias: Door(s) open while away notification
+    trigger:
+      - platform: state
+        entity_id: sensor.patio_door_sensor
+        from: 'Closed'
+        to: 'Open'
+      - platform: state
+        entity_id: sensor.east_garage_door_sensor
+        from: 'Closed'
+        to: 'Open'
+      - platform: state
+        entity_id: sensor.west_garage_door_sensor
+        from: 'Closed'
+        to: 'Open'
+    condition: 
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sensor.tara
+          state: 'Away'
+        - condition: state
+          entity_id: sensor.chauncy
+          state: 'Away'
+    action:
+      service: notify.html5
+      data:
+        title: 'Door Alarm'
+        message: 'A door has been open for 10 minutes'
+
+  - id: Doors_open
+    alias: Door(s) open
+    trigger:
+      - platform: state
+        entity_id: sensor.patio_door_sensor
+        from: 'Closed'
+        to: 'Open'
+      - platform: state
+        entity_id: sensor.east_garage_door_sensor
+        from: 'Closed'
+        to: 'Open'
+      - platform: state
+        entity_id: sensor.west_garage_door_sensor
+        from: 'Closed'
+        to: 'Open'
+    action:
+      service: timer.start
+      entity_id: timer.security
+
+  - id: Doors_closed
+    alias: Door(s) closed
+    trigger:
+      - platform: state
+        entity_id: sensor.patio_door_sensor
+        from: 'Open'
+        to: 'Closed'
+      - platform: state
+        entity_id: sensor.east_garage_door_sensor
+        from: 'Open'
+        to: 'Closed'
+      - platform: state
+        entity_id: sensor.west_garage_door_sensor
+        from: 'Open'
+        to: 'Closed'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sensor.patio_door_sensor
+          state: 'Closed'
+        - condition: state
+          entity_id: sensor.east_garage_door_sensor
+          state: 'Closed'
+        - condition: state
+          entity_id: sensor.west_garage_door_sensor
+          state: 'Closed'
+    action:
+      service: timer.cancel
+      entity_id: timer.security
+

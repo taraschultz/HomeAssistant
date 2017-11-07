@@ -1,0 +1,311 @@
+### groups.yaml
+
+###############################################################################
+### Office                                                                  ###
+###############################################################################
+
+  office:
+    name: Office
+    view: yes
+    entities:
+      - group.office_audio_group
+      - switch.office_light_switch
+      - group.officezwaveswitch
+      - group.officesensors
+      - group.pioneer_receiver
+      - group.siriusxm
+      - camera.office_camera
+      - group.HASSPi
+
+###############################################################################
+### Home Theater                                                            ###
+###############################################################################
+
+  home_theater:
+    name: Home Theater
+    view: yes
+    entities:
+      - remote.home_theater
+      - media_player.onkyo_receiver
+      - media_player.kodi
+      - media_player.home_theater
+      - media_player.plex
+      - media_player.plex_web_chrome
+      - media_player.home_theater_audio
+
+###############################################################################
+### Living Room                                                             ###
+###############################################################################
+ 
+  living_room:
+    name: Living Room
+    view: yes
+    entities:
+      - media_player.upstairs_living_room
+      - media_player.sonos_playbar
+
+###############################################################################
+### Office Audio Group                                                      ###
+###############################################################################
+
+  office_audio_group:
+    name: Office Audio Group
+    entities:
+      - media_player.office_audio
+      - media_player.audio_group
+
+###############################################################################
+### Pioneer Receiver                                                        ###
+###############################################################################
+
+  pioneer_receiver:
+    name: Pioneer Receiver
+    entities:
+      - switch.pioneer_receiver_power
+      - switch.pioneer_receiver_input_aux
+      - switch.pioneer_receiver_input_network
+      - switch.pioneer_receiver_input_phono
+      - switch.pioneer_receiver_input_tuner
+      - switch.pioneer_receiver_mute
+      - switch.pioneer_receiver_volume_up
+      - switch.pioneer_receiver_volume_down
+
+###############################################################################
+### SiriusXM                                                                ###
+###############################################################################
+
+  siriusxm:
+    name: SiriusXM
+    entities:
+      - switch.siriusxm_power
+      - switch.siriusxm_play_pause
+      - switch.siriusxm_up
+      - switch.siriusxm_down
+      - switch.siriusxm_next
+      - switch.siriusxm_previous
+      - switch.siriusxm_siriusxmu
+      - switch.siriusxm_z100
+
+###############################################################################
+### Ecobee                                                                  ###
+###############################################################################
+
+  ecobee:
+    name: ecobee
+    entities:
+      - climate.main_floor
+      - sensor.main_floor_humidity
+      - binary_sensor.main_floor_occupancy
+      - sensor.main_floor_temperature
+      - binary_sensor.bedroom_occupancy
+      - sensor.bedroom_temperature
+      - binary_sensor.kitchen_occupancy
+      - sensor.kitchen_temperature
+      - binary_sensor.downstairs_occupancy
+      - sensor.downstairs_temperature
+
+###############################################################################
+### Office Smart Switch                                                     ###
+###############################################################################
+
+  officezwaveswitch:
+    name: Office Smart Switch
+    entities:
+      - switch.office_smart_switch_switch
+      - sensor.office_smart_switch_current
+      - sensor.office_smart_switch_energy
+      - sensor.office_smart_switch_power
+      - sensor.office_smart_switch_previous_reading
+      - sensor.office_smart_switch_voltage
+
+###############################################################################
+### Garage Doors                                                            ###
+###############################################################################
+
+  garagedoors:
+    name: Garage Doors
+    entities:
+      - cover.main_garage_door_opener
+      - cover.boat_garage_door_opener
+      - sensor.east_garage_door_sensor
+      - sensor.west_garage_door_sensor
+
+###############################################################################
+### Dark Sky                                                                ###
+###############################################################################
+
+  DarkSky:
+    name: DarkSky
+    entities:
+      - sensor.dark_sky_icon
+      - sensor.dark_sky_daily_high_temperature
+      - sensor.dark_sky_daily_low_temperature
+      - sensor.dark_sky_daily_summary
+      - sensor.dark_sky_hourly_summary
+      - sensor.dark_sky_minutely_summary
+      - sensor.dark_sky_summary
+      - sensor.dark_sky_temperature
+
+###############################################################################
+### Phones                                                                  ###
+###############################################################################
+
+  Phones:
+    name: Phones
+    entities:
+      - device_tracker.64bc0c45f661 #Tara's Phone
+      - device_tracker.fcc2deb1d7bb #Chauncy's Phone
+
+###############################################################################
+### Office Sensors                                                          ###
+###############################################################################
+
+  OfficeSensors:
+    name: Office Sensors
+    entities:
+      - sensor.aeotec_zw100_multisensor_6_alarm_level
+      - sensor.aeotec_zw100_multisensor_6_alarm_type
+      - sensor.aeotec_zw100_multisensor_6_burglar
+      - sensor.aeotec_zw100_multisensor_6_luminance
+      - sensor.aeotec_zw100_multisensor_6_relative_humidity
+      - sensor.aeotec_zw100_multisensor_6_sourcenodeid
+      - sensor.aeotec_zw100_multisensor_6_temperature
+      - sensor.aeotec_zw100_multisensor_6_ultraviolet
+      - binary_sensor.aeotec_zw100_multisensor_6_sensor
+
+###############################################################################
+### Door/Window Sensors                                                     ###
+###############################################################################
+
+  DoorSensors:
+    name: Door Sensors
+    entities:
+      - sensor.patio_door_alarm
+      - sensor.patio_door_sensor
+      - binary_sensor.patio_door_sensor_sensor
+      - sensor.entryway_alarm
+      - sensor.entryway_sensor
+      - binary_sensor.entryway_sensor_sensor
+      - sensor.east_garage_door_alarm
+      - sensor.east_garage_door_sensor
+      - binary_sensor.east_garage_door_sensor
+      - sensor.west_garage_door_alarm
+      - sensor.west_garage_door_sensor
+      - binary_sensor.west_garage_door_sensor
+      - binary_sensor.door_open_while_away
+
+###############################################################################
+### External Sensors                                                        ###
+###############################################################################
+
+  ExternalSensors:
+    name: External Sensors
+    entities:
+      - binary_sensor.iss
+      - sensor.usps
+      - sensor.ups
+
+###############################################################################
+### HASS Raspberry Pi                                                       ###
+###############################################################################
+
+  HASSPi:
+    name: HASSPi
+#    view: yes
+    entities:
+      - sensor.ram_used
+      - sensor.ram_available
+      - sensor.disk_free_
+      - sensor.disk_used_
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+      - sensor.cpu_used
+      - sensor.cpu_speed
+      - sensor.since_last_boot
+
+###############################################################################
+## Devices                                                                  ###
+###############################################################################
+  Devices:
+    name: Devices
+    entities:
+      - device_tracker.0018dd071179 #HDHomeRun Connect
+      
+
+###############################################################################
+### System Monitor View                                                     ###
+###############################################################################
+
+  Monitor:
+    name: Monitor
+    view: yes
+    entities:
+      - group.EtherMine
+      - group.CryptoCurrency
+      - group.Computers
+      - group.HASSPi
+      - group.externalsensors
+      - group.People
+      - group.Devices
+      - group.BluetoothTrackers
+      - group.IPAddresses
+
+  EtherMine:
+    name: Ethereum Miner
+    entities:
+      - sensor.hashrate
+      - sensor.unpaid_balance
+      - sensor.generated_ethereum_value
+
+  CryptoCurrency:
+    name: CryptoCurrency
+    entities: 
+      - sensor.ethereum
+      - sensor.bitcoin
+      - sensor.ripple
+
+  Computers:
+    name: Computers
+    entities:
+      - device_tracker.b827eb8bc746 #GooglePi
+      - device_tracker.bc5ff4eaae08 #HTPC01
+      - device_tracker.d0509928f1c5 #TaraOffice
+      - device_tracker.480fcf40121e #Work PC
+      - device_tracker.b827ebe50666 #HASSPi
+      - device_tracker.68f72881e196 #Lenovo Laptop ETH0
+      - device_tracker.985fd3b6f0d0 #Chauncy's Surface
+      - device_tracker.3059b70971dc #Chauncy's Surface
+      - device_tracker.bc8385e4901d #Tara's Surface
+
+  BluetoothTrackers:
+    name: Bluetooth Trackers
+    entities:
+      - device_tracker.nexus_5x
+
+  IPAddresses:
+    name: IP Addresses
+    entities:
+      - sensor.myipopendnscom
+      - sensor.pterodactyltechnology
+
+###############################################################################
+### Doors                                                                   ###
+###############################################################################
+
+  Doors:
+    name: Doors
+    view: yes
+    entities:
+      - group.garagedoors
+      - group.doorsensors
+
+###############################################################################
+### People                                                                  ###
+###############################################################################
+
+  People:
+    name: People
+    entities:
+      - sensor.tara
+      - sensor.chauncy
+

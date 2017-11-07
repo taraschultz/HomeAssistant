@@ -1,0 +1,13 @@
+  minutes:
+    name: Minutes
+    initial: 0
+    min: 0
+    max: 60
+    step: 1
+
+  seconds:
+    name: Seconds
+    initial: 0
+    min: 0
+    max: 60
+    step: 1

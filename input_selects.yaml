@@ -1,0 +1,8 @@
+  pihole:
+    name: Pi-hole
+    options:
+      - Select
+      - Disable
+      - Enable
+    intial: Select
+    icon: mdi:server-network

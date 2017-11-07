@@ -1,0 +1,21 @@
+
+  - name: HTML5
+    platform: html5
+    gcm_api_key: !secret google_cloud_messaging_key
+    gcm_sender_id: !secret google_cloud_messaging_sender_id
+
+  - name: ecobee_notifier
+    platform: ecobee
+
+  - name: gmail
+    platform: smtp
+    server: smtp.gmail.com
+    port: 587
+    timeout: 15
+    sender: !secret google_domain_username
+    encryption: starttls
+    username: !secret google_domain_username
+    password: !secret gmail_password
+    recipient:
+      - !secret google_domain_username
+    sender_name: My Home Assistant

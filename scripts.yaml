@@ -1,0 +1,32 @@
+  garage_door_notify:
+    alias: Garage door notify
+    sequence:
+      - delay:
+          minutes: 10
+      - service: notify.notify
+        data:
+          message: 'The garage door is still open.'
+
+  good_morning:
+    alias: Good Morning Message
+    sequence:
+      - service: tts.google_say
+        entity_id: media_player.office_audio
+        data_template:
+          message: "May the force be with you"
+
+  front_door_notify:
+    alias: Front door notify
+    sequence:
+      - delay:
+          minutes: 1
+      - service: notify.notify
+        data:
+          message: 'The front door is open.'
+
+  vacation_door_notify:
+    alias: Vacation door notify
+    sequence:
+      - service: notify.notify
+        data:
+          message: 'A door is open.'

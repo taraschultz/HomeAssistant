@@ -1,0 +1,259 @@
+### sensor.yaml
+
+###############################################################################
+### Utilities                                                               ###
+###############################################################################
+
+  - platform: cpuspeed
+
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: disk_free
+        arg: /
+      - type: memory_use_percent
+      - type: memory_free
+      - type: since_last_boot
+      - type: processor_use
+
+  - platform: speedtest
+    monitored_conditions:
+      - download
+      - upload
+    hour:
+      - 7
+      - 12
+      - 18
+      - 23
+
+  - platform: dnsip
+#    scan_interval: 3600
+
+  - platform: dnsip
+    hostname: !secret base_url
+
+###############################################################################
+### RESTful API                                                             ###
+###############################################################################
+
+  - platform: rest
+    resource: https://ethermine.org/api/miner_new/2c8C4C5D79DFe9F49821981A4C043586eAa7A522
+    name: Hashrate
+    value_template: >
+      {% set hashRate = value_json.hashRate.split(' ') %}
+      {{ hashRate[0] | float }}
+    unit_of_measurement: MH/s
+    scan_interval: 600
+
+  - platform: rest
+    resource: https://ethermine.org/api/miner_new/2c8C4C5D79DFe9F49821981A4C043586eAa7A522
+    name: Unpaid Balance
+    value_template: >
+      {{ ( value_json.unpaid / 1000000000000000000 ) | round(5) }}
+    unit_of_measurement: ETH
+    scan_interval: 600
+
+###############################################################################
+### MQTT                                                                    ###
+###############################################################################
+
+#  - platform: mqtt_room
+#    device_id: nexus5x
+#    name: 'Nexus 5x'
+#    state_topic: 'room_presence'
+#    timeout: 5
+#    away_timeout: 60
+
+###############################################################################
+### Forecast.io                                                             ###
+###############################################################################
+
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    monitored_conditions:
+      - summary
+      - icon
+      - daily_summary
+      - hourly_summary
+      - minutely_summary
+      - temperature
+      - temperature_max
+      - temperature_min
+
+###############################################################################
+### Package Tracking                                                        ###
+###############################################################################
+
+#  - platform: usps
+#    username: !secret usps_username
+#    password: !secret usps_password
+
+#  - platform: ups
+#    username: !secret ups_username
+#    password: !secret ups_password
+
+###############################################################################
+### Broadlink                                                               ###
+###############################################################################
+
+  - platform: broadlink
+    update_interval: 60
+    host: 192.168.1.150
+    mac: 'b4:43:0d:ef:9d:f4'
+    type: rm2_pro
+    monitored_condtions:
+      - 'temperature'
+#      - 'humidity'
+#      - 'air_quality'
+#      - 'light'
+#      - 'noise'
+    
+###############################################################################
+### Templates                                                               ###
+###############################################################################
+
+  - platform: template
+    sensors:
+      alarm_hours:
+        friendly_name: 'Alarm hours'
+        value_template: >
+          {% if (now().strftime("%-H")|int)*60 + (now().strftime("%-M")|int) > 1350 or
+                (now().strftime("%-H")|int)*60 + (now().strftime("%-M")|int) < 450
+          %}
+            true
+          {% else %}
+            false
+          {% endif %}
+      acceptable_door_state:
+        friendly_name: 'Acceptable Door state'
+        value_template: >
+          {% if is_state('sensors.alarm_hours','true') or is_state('climate.main_floor.attributes.operation_mode', 'cool') or is_state('input_boolean.vacation_mode', 'on') %}
+            Close
+          {% else %}
+            Open
+          {% endif %}
+      east_garage_door_sensor:
+        friendly_name: 'East garage door sensor'
+        entity_id: sensor.east_garage_door_access_control
+        value_template: >
+          {% if is_state('sensor.east_garage_door_access_control', '23') %}
+            Closed
+          {% else %}
+            Open
+          {% endif %}
+      east_garage_door_alarm:
+        friendly_name: 'East garage door alarm'
+        entity_id: sensor.east_garage_door_burglar
+        value_template: >
+          {% if is_state('sensor.east_garage_door_burglar', '3') %}
+            Alarm
+          {% else %}
+            Safe
+          {% endif %}
+      west_garage_door_sensor:
+        friendly_name: 'West garage door sensor'
+        entity_id: sensor.west_garage_door_access_control
+        value_template: >
+          {% if is_state('sensor.west_garage_door_access_control', '23') %}
+            Closed
+          {% else %}
+            Open
+          {% endif %}
+      west_garage_door_alarm:
+        friendly_name: 'West garage door alarm'
+        entity_id: sensor.west_garage_door_burglar
+        value_template: >
+          {% if is_state('sensor.west_garage_door_burglar', '3') %}
+            Alarm
+          {% else %}
+            Safe
+          {% endif %}
+      patio_door_sensor:
+        friendly_name: 'Patio door sensor'
+        entity_id: sensor.patio_door_access_control
+        value_template: >
+          {% if is_state('sensor.patio_door_access_control', '23') %}
+            Closed
+          {% else %}
+            Open
+          {% endif %}
+      patio_door_alarm:
+        friendly_name: 'Patio door alarm'
+        entity_id: sensor.patio_door_burglar
+        value_template: >
+          {% if is_state('sensor.patio_door_burglar', '3') %}
+            Alarm
+          {% else %}
+            Safe
+          {% endif %}
+      entryway_sensor:
+        friendly_name: 'Front door sensor'
+        entity_id: sensor.entryway_access_control
+        value_template: >
+          {% if is_state('sensor.entryway_access_control', '23') %}
+            Closed
+          {% else %}
+            Open
+          {% endif %}
+      entryway_alarm:
+        friendly_name: 'Front door alarm'
+        entity_id: sensor.entryway_burglar
+        value_template: >
+          {% if is_state('sensor.entryway_burglar', '3') %}
+            Alarm
+          {% else %}
+            Safe
+          {% endif %}
+#      battery_level_warning:
+#        friendly_name: 'Sensor Battery Level Warning'
+#        value_template: >
+#          {% if states.zwave.aeotec_zw100_multisensor_6.attributes.battery_level | float < 10 or
+#                states.zwave.patio_door.attributes.battery_level | float < 10 or
+#                states.zwave.east_garage_door.attributes.battery_level | float < 10 or
+#                states.zwave.west_garage_door.attributes.battery_level | float < 10
+#          %}
+#            Replace
+#          {% elif states.zwave.aeotec_zw100_multisensor_6.attributes.battery_level | float < 25 or
+#                  states.zwave.patio_door.attributes.battery_level | float < 25 or
+#                  states.zwave.east_garage_door.attributes.battery_level | float < 25 or
+#                  states.zwave.west_garage_door.attributes.battery_level | float < 25
+#          %}
+#            Low
+#          {% else %}
+#            Good
+#          {% endif %}
+      generated_ethereum_value:
+        friendly_name: 'Generated Ethereum Value'
+        unit_of_measurement: USD
+        value_template: >
+          {% set ether = ( states('sensor.ethereum') | float ) * ( states('sensor.unpaid_balance') | float ) %}
+          {{ ether | float | round(2) }}
+      tara:
+        friendly_name: Tara
+        value_template: >
+          {% if is_state( 'device_tracker.64bc0c45f661', 'home' ) %}
+            Home
+          {% else %}
+            Away
+          {% endif %}
+        icon_template: >
+          {% if is_state( 'device_tracker.64bc0c45f661', 'home' ) %}
+            mdi:home
+          {% else %}
+            mdi:car
+          {% endif %}
+      chauncy:
+        friendly_name: Chauncy
+        value_template: >
+          {% if is_state( 'device_tracker.fcc2deb1d7bb', 'home' ) %}
+            Home
+          {% else %}
+            Away
+          {% endif %}
+        icon_template: >
+          {% if is_state( 'device_tracker.fcc2deb1d7bb', 'home' ) %}
+            mdi:home
+          {% else %}
+            mdi:car
+          {% endif %}

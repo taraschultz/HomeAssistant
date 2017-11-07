@@ -1,0 +1,99 @@
+  shut_front_door:
+    name: Shut front door
+    entity_id: binary_sensor.front_door_open
+    state: true
+    repeat: 15
+    can_acknowledge: True
+    skip_first: True
+    notifiers:
+      - nextus5x
+      - officedesktop
+      - laptop
+      - firetablet
+      - surface
+
+  shut_patio_door:
+    name: Shut patio door
+    entity_id: binary_sensor.patio_door_open
+    state: true
+    repeat: 15
+    can_acknowledge: True
+    skip_first: True
+    notifiers:
+      - nextus5x
+      - officedesktop
+      - laptop
+      - firetablet
+      - surface
+
+  door_open_while_away:
+    name: Doors open while away
+    done_message: Doors have been closed
+    entity_id: binary_sensor.door_open_while_away
+    state: True
+    repeat: 5
+    can_acknowledge: True
+    skip_first: False
+    notifiers:
+      - nextus5x
+      - officedesktop
+      - laptop
+      - firetablet
+      - surface
+
+  close_main_garage_door:
+    name: Close main garage door
+    entity_id: cover.main_garage_door_opener
+    state: 'open'
+    repeat: 15
+    can_acknowledge: True
+    skip_first: True
+    notifiers:
+      - nextus5x
+      - officedesktop
+      - laptop
+      - firetablet
+      - surface
+
+  close_boat_garage_door:
+    name: Close boat garage door
+    entity_id: cover.boat_garage_door_opener
+    state: 'open'
+    repeat: 15
+    can_acknowledge: True
+    skip_first: True
+    notifiers:
+      - nextus5x
+      - officedesktop
+      - laptop
+      - firetablet
+      - surface
+
+  shut_east_garage_door:
+    name: East garage door
+    entity_id: binary_sensor.east_garage_door_open
+    state: true
+    repeat: 15
+    can_acknowledge: True
+    skip_first: True
+    notifiers:
+      - nextus5x
+      - officedesktop
+      - laptop
+      - firetablet
+      - surface
+
+  shut_west_garage_door:
+    name: West garage door
+    entity_id: binary_sensor.west_garage_door_open
+    state: true
+    repeat: 15
+    can_acknowledge: True
+    skip_first: True
+    notifiers:
+      - nextus5x
+      - officedesktop
+      - laptop
+      - firetablet
+      - surface
+

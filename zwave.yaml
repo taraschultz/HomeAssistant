@@ -1,0 +1,6 @@
+  usb_path: /dev/serial/by-id/usb-0658_0200-if00
+  new_entity_ids: true
+  network_key: !secret zwave_network_key
+#  config_path: /srv/hass/src/open-zwave-control-panel/config
+#  polling_interval: 60000
+#  device_config: !include zwave_device_config.yaml

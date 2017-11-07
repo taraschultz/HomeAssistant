@@ -1,0 +1,418 @@
+sensor.aeotec_zw100_multisensor_6_alarm_level:
+  friendly_name: Office Alarm Level
+  hidden: true
+sensor.aeotec_zw100_multisensor_6_alarm_type:
+  friendly_name: Office Alarm Type
+  hidden: true
+sensor.aeotec_zw100_multisensor_6_burglar:
+  friendly_name: Office Burglar
+sensor.aeotec_zw100_multisensor_6_luminance:
+  friendly_name: Office Luminance
+sensor.aeotec_zw100_multisensor_6_relative_humidity:
+  friendly_name: Office Humidity
+sensor.aeotec_zw100_multisensor_6_sourcenodeid:
+  friendly_name: Office SourceNodeId
+  hidden: true
+sensor.aeotec_zw100_multisensor_6_temperature:
+  friendly_name: Office Temperature
+sensor.aeotec_zw100_multisensor_6_ultraviolet:
+  friendly_name: Office Ultraviolet
+binary_sensor.aeotec_zw100_multisensor_6_sensor:
+  friendly_name: Office MultiSensor
+  hidden: true
+sensor.aeotec_zw100_multisensor_6_battery_level:
+  friendly_name: Office MultiSensor Battery Level
+sensor.front_door_access_control:
+  hidden: true
+sensor.front_door_alarm_level:
+  hidden: true
+sensor.front_door_alarm_type:
+  hidden: true
+sensor.front_door_burglar:
+  hidden: true
+sensor.front_door_sourcenodeid:
+  hidden: true
+binary_sensor.front_door_sensor:
+  hidden: true
+sensor.patio_door_access_control:
+  hidden: true
+sensor.patio_door_alarm_level:
+  hidden: true
+sensor.patio_door_alarm_type:
+  hidden: true
+sensor.patio_door_burglar:
+  hidden: true
+sensor.patio_door_sourcenodeid:
+  hidden: true
+binary_sensor.patio_door_sensor:
+  hidden: true
+sensor.east_garage_door_access_control:
+  hidden: true
+sensor.east_garage_door_alarm_level:
+  hidden: true
+sensor.east_garage_door_alarm_type:
+  hidden: true
+sensor.east_garage_door_burglar:
+  hidden: true
+sensor.east_garage_door_sourcenodeid:
+  hidden: true
+binary_sensor.east_garage_door_sensor:
+  hidden: true
+sensor.west_garage_door_access_control:
+  hidden: true
+sensor.west_garage_door_alarm_level:
+  hidden: true
+sensor.west_garage_door_alarm_type:
+  hidden: true
+sensor.west_garage_door_burglar:
+  hidden: true
+sensor.west_garage_door_sourcenodeid:
+  hidden: true
+binary_sensor.west_garage_door_sensor:
+  hidden: true
+binary_sensor.patio_door_open:
+  hidden: true
+binary_sensor.front_door_open:
+  hidden: true
+binary_sensor.east_garage_door_open:
+  hidden: true
+binary_sensor.west_garage_door_open:
+  hidden: true
+binary_sensor.door_open_while_away:
+  hidden: false
+sensor.acceptable_door_state:
+  hidden: true
+sensor.alarm_hours:
+  hidden: true
+sensor.battery_level_warning:
+  hidden: true
+sensor.hashrate:
+  icon: mdi:pound
+sensor.unpaid_balance:
+  icon: mdi:coins
+sensor.generated_ethereum_value:
+  icon: mdi:currency-usd
+switch.office_fan_switch_2_0:
+  emulated_hue_name: Office Fan
+switch.office_light:
+  emulated_hue_name: Office Light
+  friendly_name: Office Light
+media_player.kodi:
+  emulated_hue: false
+media_player.receiver:
+  emulated_hue: false
+media_player.audio_group:
+  emulated_hue: false
+media_player.home_theater:
+  emulated_hue: false
+media_player.home_theater_2:
+  emulated_hue: false
+media_player.home_theater_audio:
+  emulated_hue: false
+media_player.home_theater_audio_2:
+  emulated_hue: false
+media_player.office_audio:
+  emulated_hue: false
+media_player.office_audio_2:
+  emulated_hue: false
+sun.sun:
+  hidden: true
+device_tracker.0c47c91c88bb:
+  friendly_name: FireTV1
+  hidden: false
+device_tracker.446132cf261b:
+  friendly_name: Ecobee
+  hidden: true
+device_tracker.ec9bf3d62aa7:
+  friendly_name: strum
+  hidden: false
+device_tracker.kindlee3555b234:
+  friendly_name: Kindle Tablet
+  hidden: false
+device_tracker.Chromecast:
+  friendly_name: Chromecast Home Theater
+  hidden: false
+device_tracker.Chromecast_2:
+  friendly_name: Chromecast Office Audio
+  hidden: false
+device_tracker.broadlink_rmprosubef9df4:
+  friendly_name: Broadlink RM2 Pro
+  hidden: true
+device_tracker.chromecast_3:
+  hidden: true
+device_tracker.chromecastaudio:
+  hidden: true
+device_tracker.kindle333a5012f:
+  hidden: true
+device_tracker.5cc5d4dace1f:
+  hidden: true
+device_tracker.f4f5d835516e:
+  friendly_name: Bedroom Chromecast
+  hidden: true
+device_tracker.f4f5d8cdebba:
+  friendly_name: Google Home
+  hidden: true
+device_tracker.ac9b0a0f04b9:
+  friendly_name: Sony Blu-ray Player
+  hidden: true
+device_tracker.0009b0dbfb77:
+  friendly_name: Onkyo Receiver
+  hidden: true
+device_tracker.281878bab3d6:
+  friendly_name: Microsoft Surface
+  hidden: true
+device_tracker.985fd3b6f0d0:
+  friendly_name: Microsoft Surface
+  hidden: true
+device_tracker.30055c95971b:
+  friendly_name: Brother HL-L2380DW
+  hidden: true
+device_tracker.709e2967a6fb:
+  friendly_name: Playstation 4
+  hidden: true
+device_tracker.b827ebe50666:
+  friendly_name: HASSPi
+  hidden: false
+device_tracker.b8e937779ee3:
+  friendly_name: Sonos Playbar
+  hidden: true
+device_tracker.bc5ff4eaae08:
+  friendly_name: HTPC01
+  hidden: false
+device_tracker.d0509928f1c5:
+  friendly_name: Office Desktop
+  hidden: false
+device_tracker.34d2704642ea:
+  friendly_name: Kindle Paperwhite
+  hidden: true
+device_tracker.00135f0716d9:
+  friendly_name: Cisco
+  hidden: true
+device_tracker.480fcf40121e:
+  friendly_name: Work PC
+  hidden: false
+device_tracker.6452990ed340:
+  friendly_name: The Chamberlain Group, Inc
+  hidden: true
+device_tracker.802aa859560d:
+  friendly_name: Ubiquiti Networks
+  hidden: true
+device_tracker.802aa8595763:
+  friendly_name: Ubiquiti Networks
+  hidden: true
+device_tracker.a002dc94bb1f:
+  friendly_name: Amazon Technologies Inc
+  hidden: true
+device_tracker.a002dcad3fc4:
+  friendly_name: Amazon Technologies Inc
+  hidden: true
+device_tracker.b07fb936b869:
+  friendly_name: Netgear
+  hidden: true
+device_tracker.e0cb1dcb0673:
+  frinedly_name: Unknown-private
+  hidden: true
+device_tracker.60f18913806d:
+  friendly_name: Murata Manufacturing Co
+  hidden: true
+device_tracker.f4f5d8282cc0:
+  frinedly_name: Google
+  hidden: true
+device_tracker.b827eb8bc746:
+  friendly_name: GooglePi
+device_tracker.b827ebde9213:
+  friendly_name: GooglePi eth0
+  hidden: true
+device_tracker.b8ae6ea8a488:
+  friendly_name: Nintendo 2DS
+  hidden: true
+device_tracker.0403d6296606:
+  friendly_name: Nintendo Switch
+  hidden: true
+device_tracker.68f72881e196:
+  friendly_name: Lenovo Laptop ETH0
+  hidden: false
+device_tracker.00425a1db019:
+  friendly_name: Cisco Systems Inc
+  hidden: true
+device_tracker.0c4885d7ea1b:
+  friendly_name: Vicki LG G3
+device_tracker.b853aca49057:
+  friendly_name: Apple iPhone
+device_tracker.0034da57b776:
+  friendly_name: Jersi Nexus 5x
+device_tracker.40f4077cee45:
+  friendly_name: Dadah Nintendo 3DS
+  hidden: true
+device_tracker.60f189834649:
+  friendly_name: Dadah Murata Manufacturing
+device_tracker.9ce635ce3bdd:
+  friendly_name: Dadah Nintendo 3DS
+  hidden: true
+device_tracker.b0481a3080c8:
+  friendly_name: Zack iPhone
+device_tracker.fca667b035c5:
+  friendly_name: Jersi Fire Tablet
+  hidden: true
+device_tracker.64bc0c464d10:
+  friendly_name: Paul Nexus 5x
+device_tracker.00fc8d58d1cb:
+  friendly_name: Hitron Technologies (Modem?)
+  hidden: true
+device_tracker.f099bf00acb6:
+  friendly_name: Apple, Inc.
+  hidden: true
+device_tracker.bc8385ddf2e5:
+  friendly_name: Tara's Returned Surface
+  hidden: true
+device_tracker.203d66ae4ec0:
+  friendly_name: Modem
+  hidden: true
+device_tracker.bc8385e4901d:
+  friendly_name: Tara Surface
+  hidden: false
+device_tracker.000420ed0ffe:
+  friendly_name: Harmony Hub
+  hidden: true
+device_tracker.48d6d5d05f43:
+  friendly_name: Office Google Home Mini
+  hidden: true
+device_tracker.0018dd071179:
+  friendly_name: HDHomeRun Connect Quatro
+device_tracker.5460092aa396:
+  friendly_name: Living Room Chromecast
+  hidden: true
+device_tracker.546009540e22:
+  friendly_name: Home Theater Chromecast
+  hidden: true
+device_tracker.64bc0c45f661:
+  friendly_name: Tara
+device_tracker.8871e5606fc7:
+  friendly_name: Echo Dot
+  hidden: true
+device_tracker.a47733f710e0:
+  friendly_name: Home Theater Audio Chromecast
+  hidden: true
+device_tracker.a47733fd5982:
+  friendly_name: Office Audio Chromecast
+  hidden: true
+device_tracker.a8803824e038:
+  friendly_name: RainMachine
+  hidden: true
+device_tracker.b4430def9df4:
+  friendly_name: Broadlink RM2 Pro
+  hidden: true
+device_tracker.dc6672a43921:
+  friendly_name: Samsung Electronics Co
+  hidden: true
+device_tracker.30074df8f679:
+  friendly_name: SAMSUNG ELECTRO-MECHANICS
+  hidden: true
+device_tracker.tvbluetooth:
+  friendly_name: TV Bluetooth
+  hidden: true
+device_tracker.fcc2deb1d7bb:
+  friendly_name: Chauncy Phone
+device_tracker.3059b70971dc:
+  friendly_name: Chauncy Surface
+switch.office_light_switch:
+  google_assistant: true
+  google_assistant_name: office light
+switch.pioneer_receiver_mute:
+  google_assistant: true
+  google_assistant_name: mute office
+switch.pioneer_receiver_input_aux:
+  google_assistant: false
+switch.pioneer_receiver_input_network:
+  google_assistant: false
+switch.pioneer_receiver_input_phono:
+  google_assistant: false
+switch.pioneer_receiver_input_tuner:
+  google_assistant: false
+switch.pioneer_receiver_power:
+  google_assistant: true
+  google_assistant_name: office receiver
+switch.pioneer_receiver_volume_down:
+  google_assistant: false
+switch.pioneer_receiver_volume_up:
+  google_assistant: false
+switch.siriusxm_down:
+  google_assistant: false
+switch.siriusxm_mute:
+  google_assistant: false
+switch.siriusxm_next:
+  google_assistant: false
+switch.siriusxm_play_pause:
+  google_assistant: false
+switch.siriusxm_power:
+  google_assistant: true
+  google_assistant_name: sirius x m
+switch.siriusxm_previous:
+  google_assistant: false
+switch.siriusxm_siriusxmu:
+  google_assistant: false
+switch.siriusxm_up:
+  google_assistant: false
+switch.siriusxm_z100:
+  google_assistant: false
+switch.zone_blvd__se_side_spray:
+  google_assistant: false
+switch.zone_front_rotor:
+  google_assistant: false
+switch.zone_north_back_rotor:
+  google_assistant: false
+switch.zone_north_side_spray:
+  google_assistant: false
+switch.zone_north_side_spray_2:
+  google_assistant: false
+switch.zone_south_back_rotor:
+  google_assistant: false
+sensor.door_one_alarm_level:
+  hidden: true
+sensor.door_one_alarm_type:
+  hidden: true
+sensor.door_three_access_control:
+  hidden: true
+sensor.door_three_alarm_level:
+  hidden: true
+sensor.door_three_alarm_type:
+  hidden: true
+sensor.door_three_burglar:
+  hidden: true
+sensor.door_three_sourcenodeid:
+  hidden: true
+binary_sensor.door_one_sensor:
+  hidden: true
+binary_sensor.door_three_sensor:
+  hidden: true
+device_tracker.84788ba9a0e3:
+  hidden: true
+  friendly_name: Fuchs iPhone
+device_tracker.f0272d188632:
+  hidden: true
+  fiendly_name: Fuchs Kindle Fire
+sensor.aeotec_zw120_door_window_sensor_gen5_access_control:
+  hidden: true
+sensor.aeotec_zw120_door_window_sensor_gen5_alarm_level:
+  hidden: true
+sensor.aeotec_zw120_door_window_sensor_gen5_alarm_type:
+  hidden: true
+sensor.aeotec_zw120_door_window_sensor_gen5_burglar:
+  hidden: true
+sensor.aeotec_zw120_door_window_sensor_gen5_sourcenodeid:
+  hidden: true
+sensor.baddevice2_access_control:
+  hidden: true
+sensor.baddevice2_alarm_level:
+  hidden: true
+sensor.baddevice2_alarm_type:
+  hidden: true
+sensor.baddevice2_burglar:
+  hidden: true
+sensor.baddevice2_sourcenodeid:
+  hidden: true
+binary_sensor.aeotec_zw120_door_window_sensor_gen5_sensor:
+  hidden: true
+binary_sensor.baddevice2_sensor:
+  hidden: true
+

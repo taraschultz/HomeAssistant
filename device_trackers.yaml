@@ -1,0 +1,14 @@
+
+#  - platform: unifi
+#    host: 192.168.1.53
+#    port: 8443
+#    username: !secret unifi_username
+#    password: !secret unifi_password
+
+  - platform: snmp
+    host: 192.168.1.1
+    community: !secret community_string
+    baseoid: 1.3.6.1.2.1.4.22.1.2
+
+  - platform: bluetooth_tracker
+
