@@ -1,3 +1,4 @@
+
 sensor.aeotec_zw100_multisensor_6_alarm_level:
   friendly_name: Office Alarm Level
   hidden: true
@@ -33,6 +34,18 @@ sensor.front_door_burglar:
 sensor.front_door_sourcenodeid:
   hidden: true
 binary_sensor.front_door_sensor:
+  hidden: true
+sensor.front_door_access_control_2:
+  hidden: true
+sensor.front_door_alarm_level_2:
+  hidden: true
+sensor.front_door_alarm_type_2:
+  hidden: true
+sensor.front_door_burglar_2:
+  hidden: true
+sensor.front_door_sourcenodeid_2:
+  hidden: true
+binary_sensor.front_door_sensor_2:
   hidden: true
 sensor.patio_door_access_control:
   hidden: true
@@ -145,7 +158,7 @@ device_tracker.chromecastaudio:
 device_tracker.kindle333a5012f:
   hidden: true
 device_tracker.5cc5d4dace1f:
-  hidden: true
+  friendly_name: Intel
 device_tracker.f4f5d835516e:
   friendly_name: Bedroom Chromecast
   hidden: true
@@ -211,13 +224,10 @@ device_tracker.b07fb936b869:
   hidden: true
 device_tracker.e0cb1dcb0673:
   frinedly_name: Unknown-private
-  hidden: true
 device_tracker.60f18913806d:
   friendly_name: Murata Manufacturing Co
-  hidden: true
 device_tracker.f4f5d8282cc0:
   frinedly_name: Google
-  hidden: true
 device_tracker.b827eb8bc746:
   friendly_name: GooglePi
 device_tracker.b827ebde9213:
@@ -228,46 +238,36 @@ device_tracker.b8ae6ea8a488:
   hidden: true
 device_tracker.0403d6296606:
   friendly_name: Nintendo Switch
-  hidden: true
 device_tracker.68f72881e196:
   friendly_name: Lenovo Laptop ETH0
   hidden: false
 device_tracker.00425a1db019:
   friendly_name: Cisco Systems Inc
-  hidden: true
 device_tracker.0c4885d7ea1b:
   friendly_name: Vicki LG G3
-device_tracker.b853aca49057:
-  friendly_name: Apple iPhone
 device_tracker.0034da57b776:
   friendly_name: Jersi Nexus 5x
 device_tracker.40f4077cee45:
   friendly_name: Dadah Nintendo 3DS
-  hidden: true
 device_tracker.60f189834649:
   friendly_name: Dadah Murata Manufacturing
 device_tracker.9ce635ce3bdd:
   friendly_name: Dadah Nintendo 3DS
-  hidden: true
 device_tracker.b0481a3080c8:
   friendly_name: Zack iPhone
 device_tracker.fca667b035c5:
   friendly_name: Jersi Fire Tablet
-  hidden: true
 device_tracker.64bc0c464d10:
   friendly_name: Paul Nexus 5x
 device_tracker.00fc8d58d1cb:
   friendly_name: Hitron Technologies (Modem?)
-  hidden: true
 device_tracker.f099bf00acb6:
   friendly_name: Apple, Inc.
-  hidden: true
 device_tracker.bc8385ddf2e5:
   friendly_name: Tara's Returned Surface
   hidden: true
 device_tracker.203d66ae4ec0:
   friendly_name: Modem
-  hidden: true
 device_tracker.bc8385e4901d:
   friendly_name: Tara Surface
   hidden: false
@@ -289,7 +289,6 @@ device_tracker.64bc0c45f661:
   friendly_name: Tara
 device_tracker.8871e5606fc7:
   friendly_name: Echo Dot
-  hidden: true
 device_tracker.a47733f710e0:
   friendly_name: Home Theater Audio Chromecast
   hidden: true
@@ -312,7 +311,8 @@ device_tracker.tvbluetooth:
   friendly_name: TV Bluetooth
   hidden: true
 device_tracker.fcc2deb1d7bb:
-  friendly_name: Chauncy Phone
+  friendly_name: Old Chauncy Phone
+  hidden: true
 device_tracker.3059b70971dc:
   friendly_name: Chauncy Surface
 switch.office_light_switch:
@@ -386,10 +386,8 @@ binary_sensor.door_one_sensor:
 binary_sensor.door_three_sensor:
   hidden: true
 device_tracker.84788ba9a0e3:
-  hidden: true
   friendly_name: Fuchs iPhone
 device_tracker.f0272d188632:
-  hidden: true
   fiendly_name: Fuchs Kindle Fire
 sensor.aeotec_zw120_door_window_sensor_gen5_access_control:
   hidden: true
@@ -415,4 +413,59 @@ binary_sensor.aeotec_zw120_door_window_sensor_gen5_sensor:
   hidden: true
 binary_sensor.baddevice2_sensor:
   hidden: true
-
+device_tracker.10ae60aa7235:
+  friendly_name: Bedroom Fire Tablet
+  hidden: true
+device_tracker.google_home:
+  friendly_name: Google Home BT
+  hidden: true
+device_tracker.b8d7af76e3ab:
+  friendly_name: Chauncys Phone
+device_tracker.samsungsmg950u:
+  friendly_name: Chauncys BT Phone
+  hidden: true
+device_tracker.bose_quietcomfort_35:
+  hidden: true
+device_tracker.surfacecape:
+  friendly_name: Chauncys Surface BT
+  hidden: true
+device_tracker.jbl_flip_4:
+  hidden: true
+device_tracker.340286075053:
+  friendly_name: Intel
+device_tracker.080027a3d9da:
+  friendly_name: Work Virtualbox
+  hidden: true
+device_tracker.b853aca49057:
+  friendly_name: Moms iPhone
+device_tracker.literarys_iphone:
+  friendly_name: Moms iPhone BT
+  hidden: true
+device_tracker.7c04d045568a:
+  friendly_name: Fuchs iPhone
+device_tracker.20dfb97e4779:
+  friendly_name: Master Bedroom Google Home Mini
+  hidden: true
+device_tracker.desktopd3vftav:
+  friendly_name: Tara's Surface BT
+  hidden: true
+device_tracker.pebble_b9c6:
+  hidden: true
+device_tracker.b00594890e7d:
+  friendly_name: Liteon Technology Corporation
+weather.main_floor:
+  friendly_name: Home Weather
+binary_sensor.workday_sensor:
+  hidden: true
+switch.smart_switch_switch:
+  friendly_name: Basement Light
+timer.lightoffwork:
+  hidden: true
+timer.lightworking:
+  hidden: true
+timer.security:
+  hidden: true
+device_tracker.b2c55440c4e5:
+  hidden: true
+device_tracker.b2c55441b2c7:
+  hidden: true

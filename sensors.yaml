@@ -69,17 +69,56 @@
 ### Forecast.io                                                             ###
 ###############################################################################
 
-  - platform: darksky
-    api_key: !secret darksky_api_key
+#  - platform: darksky
+#    api_key: !secret darksky_api_key
+#    forecast:
+#      - 1
+#      - 2
+#      - 3
+#      - 4
+#      - 5
+#      - 6
+#      - 7
+#    monitored_conditions:
+#      - summary
+#      - icon
+#      - daily_summary
+#      - hourly_summary
+#      - minutely_summary
+#      - temperature
+#      - temperature_max
+#      - temperature_min
+
+  - platform: wunderground
+    api_key: !secret wunderground_api_key
     monitored_conditions:
-      - summary
-      - icon
-      - daily_summary
-      - hourly_summary
-      - minutely_summary
-      - temperature
-      - temperature_max
-      - temperature_min
+      - alerts
+      - dewpoint_f
+      - feelslike_f
+      - heat_index_f
+      - precip_today_in
+      - relative_humidity
+      - wind_mph
+      - weather
+      - weather_1d
+      - weather_1n
+      - precip_1d_in
+      - weather_2d
+      - weather_2n
+      - precip_2d_in
+      - weather_3d
+      - weather_3n
+      - precip_3d_in
+      - weather_4d
+      - weather_4n
+      - precip_4d_in
+      - temp_f
+      - temp_high_1d_f
+      - temp_low_1d_f
+      - wind_gust_mph
+      - wind_1d_mph
+      - temp_high_record_f
+      - temp_low_record_f
 
 ###############################################################################
 ### Package Tracking                                                        ###
@@ -110,6 +149,13 @@
 #      - 'noise'
     
 ###############################################################################
+### UPS                                                                     ###
+###############################################################################
+  - platform: ups
+    username: !secret ups_username
+    password: !secret ups_password
+
+###############################################################################
 ### Templates                                                               ###
 ###############################################################################
 
@@ -135,7 +181,6 @@
           {% endif %}
       east_garage_door_sensor:
         friendly_name: 'East garage door sensor'
-        entity_id: sensor.east_garage_door_access_control
         value_template: >
           {% if is_state('sensor.east_garage_door_access_control', '23') %}
             Closed
@@ -144,16 +189,30 @@
           {% endif %}
       east_garage_door_alarm:
         friendly_name: 'East garage door alarm'
-        entity_id: sensor.east_garage_door_burglar
         value_template: >
           {% if is_state('sensor.east_garage_door_burglar', '3') %}
             Alarm
           {% else %}
             Safe
           {% endif %}
+      front_door_sensor:
+        friendly_name: 'Front door sensor'
+        value_template: >
+          {% if is_state('sensor.front_door_access_control_2', '23') %}
+            Closed
+          {% else %}
+            Open
+          {% endif %}
+      front_door_alarm:
+        friendly_name: 'Front door alarm'
+        value_template: >
+          {% if is_state('sensor.front_door_burglar_2', '3') %}
+            Alarm
+          {% else %}
+            Safe
+          {% endif %}
       west_garage_door_sensor:
         friendly_name: 'West garage door sensor'
-        entity_id: sensor.west_garage_door_access_control
         value_template: >
           {% if is_state('sensor.west_garage_door_access_control', '23') %}
             Closed
@@ -162,7 +221,6 @@
           {% endif %}
       west_garage_door_alarm:
         friendly_name: 'West garage door alarm'
-        entity_id: sensor.west_garage_door_burglar
         value_template: >
           {% if is_state('sensor.west_garage_door_burglar', '3') %}
             Alarm
@@ -171,7 +229,6 @@
           {% endif %}
       patio_door_sensor:
         friendly_name: 'Patio door sensor'
-        entity_id: sensor.patio_door_access_control
         value_template: >
           {% if is_state('sensor.patio_door_access_control', '23') %}
             Closed
@@ -180,27 +237,8 @@
           {% endif %}
       patio_door_alarm:
         friendly_name: 'Patio door alarm'
-        entity_id: sensor.patio_door_burglar
         value_template: >
           {% if is_state('sensor.patio_door_burglar', '3') %}
-            Alarm
-          {% else %}
-            Safe
-          {% endif %}
-      entryway_sensor:
-        friendly_name: 'Front door sensor'
-        entity_id: sensor.entryway_access_control
-        value_template: >
-          {% if is_state('sensor.entryway_access_control', '23') %}
-            Closed
-          {% else %}
-            Open
-          {% endif %}
-      entryway_alarm:
-        friendly_name: 'Front door alarm'
-        entity_id: sensor.entryway_burglar
-        value_template: >
-          {% if is_state('sensor.entryway_burglar', '3') %}
             Alarm
           {% else %}
             Safe
@@ -232,13 +270,13 @@
       tara:
         friendly_name: Tara
         value_template: >
-          {% if is_state( 'device_tracker.64bc0c45f661', 'home' ) %}
+          {% if is_state( 'device_tracker.64bc0c45f661', 'home' ) or is_state( 'device_tracker.nexus_5x', 'home') %}
             Home
           {% else %}
             Away
           {% endif %}
         icon_template: >
-          {% if is_state( 'device_tracker.64bc0c45f661', 'home' ) %}
+          {% if is_state( 'device_tracker.64bc0c45f661', 'home' ) or is_state( 'device_tracker.nexus_5x', 'home') %}
             mdi:home
           {% else %}
             mdi:car
@@ -246,13 +284,27 @@
       chauncy:
         friendly_name: Chauncy
         value_template: >
-          {% if is_state( 'device_tracker.fcc2deb1d7bb', 'home' ) %}
+          {% if is_state( 'device_tracker.b8d7af76e3ab', 'home' ) or is_state( 'device_tracker.samsungsmg950u', 'home' ) %}
             Home
           {% else %}
             Away
           {% endif %}
         icon_template: >
-          {% if is_state( 'device_tracker.fcc2deb1d7bb', 'home' ) %}
+          {% if is_state( 'device_tracker.b8d7af76e3ab', 'home' ) or is_state( 'device_tracker.samsungsmg950u', 'home' ) %}
+            mdi:home
+          {% else %}
+            mdi:car
+          {% endif %}
+      dianna:
+        friendly_name: Dianna
+        value_template: >
+          {% if is_state( 'device_tracker.b853aca49057', 'home' ) or is_state( 'device_tracker.literarys_iphone', 'home' )  %}
+            Home
+          {% else %}
+            Away
+          {% endif %}
+        icon_template: >
+          {% if is_state( 'device_tracker.b853aca49057', 'home' ) or is_state( 'device_tracker.literarys_iphone', 'home' ) %}
             mdi:home
           {% else %}
             mdi:car

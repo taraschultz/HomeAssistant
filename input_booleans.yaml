@@ -1,3 +1,6 @@
   vacation_mode:
     initial: off
     icon: mdi:sunglasses
+  tara_vacation_mode:
+    initial: off
+    icon: mdi:sunglasses

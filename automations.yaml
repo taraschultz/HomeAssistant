@@ -11,18 +11,13 @@
           state: 'home'
         - condition: time
           after: '07:55:00'
-          weekday:
-            - mon
-            - tue
-            - wed
-            - thu
-            - fri
+        - condition: state
+          entity_id: 'binary_sensor.workday_sensor'
+          state: 'on'
         - condition: state
           entity_id: switch.pioneer_receiver_power
           state: 'off'
     action:
-      - service: switch.turn_on
-        entity_id: switch.office_smart_switch_switch
       - service: switch.turn_on
         entity_id: switch.pioneer_receiver_power
       - delay: 00:00:05
@@ -53,11 +48,11 @@
     alias: Front door tamper alarm
     trigger:
       platform: numeric_state
-      entity_id: sensor.front_door_burglar
+      entity_id: sensor.front_door_burglar_2
       above: 2
     condition:
       condition: numeric_state
-      entity_id: sensor.front_door_burglar
+      entity_id: sensor.front_door_burglar_2
       above: 2
     action:
       - service: tts.google_say
@@ -136,12 +131,9 @@
         - condition: time
           after: '07:30:00'
           before: '18:00:00'
-          weekday:
-            - mon
-            - tue
-            - wed
-            - thu
-            - fri
+        - condition: state
+          entity_id: 'binary_sensor.workday_sensor'
+          state: 'on'
     action:
       service: switch.turn_on
       entity_id: switch.office_light_switch
@@ -243,12 +235,9 @@
         - condition: time
           after: '07:30:00'
           before: '18:00:00'
-          weekday:
-            - mon
-            - tue
-            - wed
-            - thu
-            - fri
+        - condition: state
+          entity_id: 'binary_sensor.workday_sensor'
+          state: 'on'
     action:
       service: switch.turn_off
       entity_id: switch.office_light_switch
@@ -353,6 +342,10 @@
         entity_id: sensor.west_garage_door_sensor
         from: 'Closed'
         to: 'Open'
+      - platform: state
+        entity_id: sensor.front_door_sensor
+        from: 'Closed'
+        to: 'Open'
     condition: 
       condition: and
       conditions:
@@ -366,7 +359,7 @@
       service: notify.html5
       data:
         title: 'Door Alarm'
-        message: 'A door has been open for 10 minutes'
+        message: 'A door is open while no one is home.'
 
   - id: Doors_open
     alias: Door(s) open

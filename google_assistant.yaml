@@ -1,8 +1,30 @@
   project_id: homeassistant-174516
   client_id: !secret google_assistant_client_id
   access_token: !secret google_assistant_access_token
+  expose_by_default: false
   exposed_domains:
     - switch
     - light
     - climate
-
+  entity_config:
+    switch.office_light_switch:
+      name: Office light switch
+      aliases:
+        - lights
+      type: light
+      expose: true
+    switch.pioneer_receiver_mute:
+      name: Mute receiver
+      aliases:
+        - mute receiver
+      expose: true
+    switch.pioneer_receiver_power:
+      name: Office Receiver
+      aliases:
+        - receiver
+      expose: true
+    switch.smart_switch_switch:
+      name: Basement light
+      aliases:
+        - theater light
+      expose: true

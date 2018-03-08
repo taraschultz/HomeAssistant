@@ -8,9 +8,9 @@
     name: Office
     view: yes
     entities:
+      - camera.office_camera
       - group.office_audio_group
       - switch.office_light_switch
-      - group.officezwaveswitch
       - group.officesensors
       - group.pioneer_receiver
       - group.siriusxm
@@ -25,6 +25,7 @@
     name: Home Theater
     view: yes
     entities:
+      - group.zwaveswitch
       - remote.home_theater
       - media_player.onkyo_receiver
       - media_player.kodi
@@ -41,6 +42,7 @@
     name: Living Room
     view: yes
     entities:
+      - camera.living_room_camera
       - media_player.upstairs_living_room
       - media_player.sonos_playbar
 
@@ -105,18 +107,18 @@
       - sensor.downstairs_temperature
 
 ###############################################################################
-### Office Smart Switch                                                     ###
+### Smart Switch                                                            ###
 ###############################################################################
 
-  officezwaveswitch:
-    name: Office Smart Switch
+  zwaveswitch:
+    name: Smart Switch
     entities:
-      - switch.office_smart_switch_switch
-      - sensor.office_smart_switch_current
-      - sensor.office_smart_switch_energy
-      - sensor.office_smart_switch_power
-      - sensor.office_smart_switch_previous_reading
-      - sensor.office_smart_switch_voltage
+      - switch.smart_switch_switch
+      - sensor.smart_switch_current
+      - sensor.smart_switch_energy
+      - sensor.smart_switch_power
+      - sensor.smart_switch_previous_reading
+      - sensor.smart_switch_voltage
 
 ###############################################################################
 ### Garage Doors                                                            ###
@@ -131,20 +133,51 @@
       - sensor.west_garage_door_sensor
 
 ###############################################################################
-### Dark Sky                                                                ###
+### Weather                                                                 ###
 ###############################################################################
 
-  DarkSky:
-    name: DarkSky
+  daily_forecast:
+    name: Daily Forecast
     entities:
-      - sensor.dark_sky_icon
-      - sensor.dark_sky_daily_high_temperature
-      - sensor.dark_sky_daily_low_temperature
-      - sensor.dark_sky_daily_summary
-      - sensor.dark_sky_hourly_summary
-      - sensor.dark_sky_minutely_summary
-      - sensor.dark_sky_summary
-      - sensor.dark_sky_temperature
+      - sensor.pws_weather_1d
+      - sensor.pws_weather_1n
+      - sensor.pws_precip_1d_in
+      - sensor.pws_weather_2d
+      - sensor.pws_weather_2n
+      - sensor.pws_precip_2d_in
+      - sensor.pws_weather_3d
+      - sensor.pws_weather_3n
+      - sensor.pws_precip_3d_in
+      - sensor.pws_weather_4d
+      - sensor.pws_weather_4n
+      - sensor.pws_precip_4d_in
+
+  weather_overview:
+    name: Weather Overview
+    entities:
+      - sensor.pws_weather
+      - sensor.pws_temp_f
+      - sensor.pws_temp_high_1d_f
+      - sensor.pws_temp_low_1d_f
+      - sensor.pws_feelslike_f
+      - sensor.pws_precip_1d_in
+      - sensor.pws_precip_today_in
+      - sensor.pws_wind_mph
+      - sensor.pws_wind_gust_mph
+      - sensor.pws_wind_1d_mph
+      - sensor.pws_relative_humidity
+      - sensor.pws_dewpoint_f
+      - sensor.pws_heat_index_f
+      - sensor.pws_alerts
+      - sensor.pws_temp_high_record_f
+      - sensor.pws_temp_low_record_f
+
+  Weather:
+    name: Weather
+    view: yes
+    entities:
+      - group.weather_overview
+      - group.daily_forecast
 
 ###############################################################################
 ### Phones                                                                  ###
@@ -154,7 +187,9 @@
     name: Phones
     entities:
       - device_tracker.64bc0c45f661 #Tara's Phone
-      - device_tracker.fcc2deb1d7bb #Chauncy's Phone
+      - device_tracker.b8d7af76e3ab #Chauncy's Phone
+      - device_tracker.0c4885d7ea1b #Vicki's Phone
+      - device_tracker.b853aca49057 #Mom's Phone
 
 ###############################################################################
 ### Office Sensors                                                          ###
@@ -180,17 +215,30 @@
   DoorSensors:
     name: Door Sensors
     entities:
-      - sensor.patio_door_alarm
       - sensor.patio_door_sensor
       - binary_sensor.patio_door_sensor_sensor
-      - sensor.entryway_alarm
-      - sensor.entryway_sensor
-      - binary_sensor.entryway_sensor_sensor
-      - sensor.east_garage_door_alarm
+      - sensor.front_door_sensor
+      - binary_sensor.front_door_sensor
       - sensor.east_garage_door_sensor
       - binary_sensor.east_garage_door_sensor
-      - sensor.west_garage_door_alarm
       - sensor.west_garage_door_sensor
+      - binary_sensor.west_garage_door_sensor
+      - binary_sensor.door_open_while_away
+
+  DoorTamper:
+    name: Door Tamper Sensors
+    entities:
+      - sensor.front_door_alarm
+      - sensor.patio_door_alarm
+      - sensor.east_garage_door_alarm
+      - sensor.west_garage_door_alarm
+
+  DoorAlarms:
+    name: Door Alarms
+    entities:
+      - binary_sensor.patio_door_sensor_sensor
+      - binary_sensor.front_sensor_sensor
+      - binary_sensor.east_garage_door_sensor
       - binary_sensor.west_garage_door_sensor
       - binary_sensor.door_open_while_away
 
@@ -213,13 +261,13 @@
     name: HASSPi
 #    view: yes
     entities:
-      - sensor.ram_used
-      - sensor.ram_available
+      - sensor.memory_use_percent
+      - sensor.memory_free
       - sensor.disk_free_
-      - sensor.disk_used_
+      - sensor.disk_use_percent_
       - sensor.speedtest_download
       - sensor.speedtest_upload
-      - sensor.cpu_used
+      - sensor.processor_use
       - sensor.cpu_speed
       - sensor.since_last_boot
 
@@ -230,7 +278,8 @@
     name: Devices
     entities:
       - device_tracker.0018dd071179 #HDHomeRun Connect
-      
+      - device_tracker.0403d6296606 #Nintendo Switch
+      - device_tracker.8871e5606fc7 #Echo Dot      
 
 ###############################################################################
 ### System Monitor View                                                     ###
@@ -281,6 +330,10 @@
     name: Bluetooth Trackers
     entities:
       - device_tracker.nexus_5x
+      - device_tracker.desktopd3vftav #Tara's Surface
+      - device_tracker.google_home
+      - device_tracker.samsungsmg950u
+      - device_tracker.surfacecape
 
   IPAddresses:
     name: IP Addresses
@@ -298,6 +351,8 @@
     entities:
       - group.garagedoors
       - group.doorsensors
+      - group.dooralarms
+      - group.doortamper
 
 ###############################################################################
 ### People                                                                  ###
@@ -308,4 +363,30 @@
     entities:
       - sensor.tara
       - sensor.chauncy
+      - sensor.dianna
+
+###############################################################################
+### Unkown devices                                                          ###
+###############################################################################
+
+  Unkown_Devices:
+    name: Unkown Devices
+    entities:
+      - device_tracker.00425a1db019 #Cisco Systems Inc
+      - device_tracker.340286075053 #Intel
+      - device_tracker.b00594890e7d #Liteon Technology Corporation
+      - device_tracker.203d66ae4ec0 #Modem
+
+###############################################################################
+### Family and Friends                                                      ###
+###############################################################################
+
+  Family_Friends:
+    name: Family and Friends
+    entities:
+      - device_tracker.9ce635ce3bdd #Dadah Nintendo 3DS
+      - device_tracker.7c04d045568a #Fuchs iPhone
+      - device_tracker.84788ba9a0e3 #Fuchs iPhone
+      - device_tracker.f0272d188632 #Fuchs Kindle Fire
+      - device_tracker.0c4885d7ea1b #Vicki LG G3
 

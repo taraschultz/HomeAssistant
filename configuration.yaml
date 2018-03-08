@@ -36,7 +36,7 @@ updater:
   # include_used_components: true
 
 # Discover some devices automatically
-discovery:
+#discovery:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -64,7 +64,7 @@ zwave: !include zwave.yaml
 
 alert: !include alerts.yaml
 binary_sensor: !include binary_sensors.yaml
-#camera: !include cameras.yaml
+camera: !include cameras.yaml
 ecobee:
   api_key: !secret ecobee_api_key
   hold_temp: False
@@ -79,3 +79,4 @@ input_boolean: !include input_booleans.yaml
 google_assistant: !include google_assistant.yaml
 #google_domains: !include google_domains.yaml
 timer: !include timers.yaml
+

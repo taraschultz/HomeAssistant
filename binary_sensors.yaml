@@ -5,6 +5,15 @@
 #  - platform: iss
 
 ###############################################################################
+### Work Days                                                               ###
+###############################################################################
+
+  - platform: workday
+    country: US
+    province: ND
+    workdays: [ mon, tue, wed, thu, fri ]
+
+###############################################################################
 ### Templates                                                               ###
 ###############################################################################
 
@@ -20,12 +29,7 @@
           {%- else -%}
           False
           {%- endif %}
-        entity_id:
-          - sensor.patio_door_sensor
-          - sensor.acceptable_door_state
 
-  - platform: template
-    sensors:
       front_door_open:
         friendly_name: 'Shut front door'
         device_class: 'opening'
@@ -36,12 +40,7 @@
           {%- else -%}
           False
           {%- endif %}
-        entity_id:
-          - sensor.front_door_sensor
-          - sensor.acceptable_door_state
 
-  - platform: template
-    sensors:
       east_garage_door_open:
         friendly_name: 'Shut East garage door'
         device_class: 'opening'
@@ -52,12 +51,7 @@
           {%- else -%}
           False
           {%- endif %}
-        entity_id:
-          - sensor.east_garage_door_sensor
-          - sensor.acceptable_door_state
 
-  - platform: template
-    sensors:
       west_garage_door_open:
         friendly_name: 'Shut West garage door'
         device_class: 'opening'
@@ -68,12 +62,7 @@
           {%- else -%}
           False
           {%- endif %}
-        entity_id:
-          - sensor.west_garage_door_sensor
-          - sensor.acceptable_door_state
 
-  - platform: template
-    sensors:
       door_open_while_away:
         friendly_name: 'Door open while away'
         device_class: 'opening'
@@ -84,18 +73,9 @@
                   is_state("sensor.west_garage_door_sensor", "Open") or
                   is_state("cover.boat_garage_door_opener", "open") or
                   is_state("cover.main_garage_door_opener", "open") )
-                and is_state("device_tracker.androidb748015634486b8e", "not_home") 
-                and is_state("device_tracker.androided54768daec2f23", "not_home") -%}
+                and is_state("sensor.tara", "away") 
+                and is_state("sensor.chauncy", "away") -%}
           True
           {%- else -%}
           False
           {%- endif %}
-        entity_id:
-          - sensor.front_door_sensor
-          - sensor.patio_door_sensor
-          - sensor.east_garage_door_sensor
-          - sensor.west_garage_door_sensor
-          - cover.boat_garage_door_opener
-          - cover.main_garage_door_opener
-          - device_tracker.androidb748015634486b8e
-          - device_tracker.androided54768daec2f23

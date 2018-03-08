@@ -1,2 +1,5 @@
 
-reboot_pi: /home/hass/.homeassistant/reboot_pi.sh
+  reboot_pi: /home/homeassistant/.homeassistant/reboot_pi.sh
+  start_iheart: /home/homeassistant/.homeassistant/start_iheart.sh
+  start_kexp: /home/homeassistant/.homeassistant/start_kexp.sh
+

@@ -1,8 +1,20 @@
+
 #  - platform: generic
 #    name: ISS
 #    still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ states.binary_sensor.iss.attributes.lat }},{{ states.binary_sensor.iss.attributes.long }}&zoom=5&size=500x500&maptype=roadmap&markers=color:blue%7Clabel:P%7C{{ states.binary_sensor.iss.attributes.lat }},{{ states.binary_sensor.iss.attributes.long }}
 #    limit_refetch_to_url_change: true
 
-  - platform: local_file
-    name: Office camera
-    file_path: /tmp/motion/lastsnap.jpg
+  - platform: mjpeg
+    name: Office Camera
+    mjpeg_url: http://192.168.1.217/video/mjpg.cgi
+    still_image_url: http://192.168.1.217/image/jpeg.cgi
+    username: !secret dlinkofficeuser
+    password: !secret dlinkofficepassword
+
+  - platform: mjpeg
+    name: Living Room Camera
+    mjpeg_url: http://192.168.1.218/video/mjpg.cgi
+    still_image_url: http://192.168.1.218/image/jpeg.cgi
+    username: !secret dlinklivingroomuser
+    password: !secret dlinklivingroompassword
+

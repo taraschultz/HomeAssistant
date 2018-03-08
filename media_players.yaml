@@ -19,9 +19,9 @@
 #    name: Bedroom Cast
 #    host: 192.168.1.148
 
-#  - platform: cast
-#    name: Upstairs Living Room Cast
-#    host: 192.168.1.141
+  - platform: cast
+    name: Upstairs Living Room Cast
+    host: 192.168.1.141
 
   - platform: cast
     name: Audio Group
@@ -34,9 +34,9 @@
 ### Sonos                                                                   ###
 ###############################################################################
 
-#  - platform: sonos
-#    name: Sonos
-#    host: 192.168.1.44
+  - platform: sonos
+    name: Sonos
+    host: 192.168.1.44
 
 ###############################################################################
 ### Onkyo Receiver                                                          ###
